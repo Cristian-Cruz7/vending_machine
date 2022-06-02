@@ -1,0 +1,15 @@
+{
+  "name": "vending-machine",
+  "version": "1.0.0",
+  "description": "vending machine designed by means of matrixes, it receives by console the product code and prints a new matrix showing the new quantity of existing products.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MIT",
+  "license": "ISC",
+  "dependencies": {
+    "matrix.js": "0.0.0",
+    "prompt-sync": "^4.2.0"
+  }
+}
