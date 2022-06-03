@@ -6,10 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "MIT",
-  "license": "ISC",
+  "author": "Thelp",
+  "license": "MIT",
   "dependencies": {
-    "matrix.js": "0.0.0",
     "prompt-sync": "^4.2.0"
   }
 }
