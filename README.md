@@ -18,7 +18,6 @@ it receives by console the product code and prints a new matrix showing the new 
 > npm version: 6.14.17
 
 > nvm version: 0.38.0
-
 ## Operation: 
 Using the node js runtime environment, you must install and execute the following command
 node **vendingMachine.js**

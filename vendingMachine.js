@@ -98,5 +98,4 @@ function main() {
   showVendingMachine(productsMachine, productStock);
   requestProduct(productsMachine, productStock);
 }
-
 main();
