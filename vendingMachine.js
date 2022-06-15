@@ -12,8 +12,8 @@ const productStock = [
 
 function showVendingMachine(matrixProducts, matrixStock, matrixCode) {
   const SPACES = " ";
-  const supline = "-";
-  const topLine = supline.repeat(122);
+  const TOPLINE = "-";
+  const topLine = TOPLINE.repeat(122);
   const spaceTable = 40; //40 size of spaces for word container in table
   const codeProduct = 3; //3 size of the spaces used by a product code. 
   let itemTable = '';
@@ -34,24 +34,24 @@ function showVendingMachine(matrixProducts, matrixStock, matrixCode) {
       squareItemTable = `|${leftSpaceTable}${matrixProducts[i][j]}${rightSpaceTable}`;
       //When the product stock is equal to zero, change the product name to ----.
       if (matrixStock[i][j] <= 1) {
-        matrixProducts[i][j] = `${supline.repeat(4)}`;
+        matrixProducts[i][j] = `${TOPLINE.repeat(4)}`;
       }
       itemTable = itemTable + `${squareItemTable}`;
       //When the end of the row is identified, add the product code and stock data.
       if (j === matrixProducts.length - 1) {
-        let imparsubtraction = 1;
+        let imparSubtraction = 1;
         //Calculate the required spaces on the left and right to organize the codes.
         spaceLeft = SPACES.repeat(Math.round((spaceTable - (codeProduct)) / 2));
-        spaceRight = SPACES.repeat(Math.round((spaceTable - (codeProduct)) / 2) - imparsubtraction);
+        spaceRight = SPACES.repeat(spaceLeft.length - imparSubtraction);
         //Calculate the spaces required on the left and right to organize the stock of the product in column 1.
         spaceLeft1 = SPACES.repeat(Math.round((spaceTable - (("Stock:" + productStock[i][j - 2]).length)) / 2))
-        spaceRight1 = SPACES.repeat((productStock[i][j - 2].length % 2 != 1) ? spaceLeft1.length : spaceLeft1.length - imparsubtraction); // We use a ternary operator to find out whether the length of the product stock is even or odd.
+        spaceRight1 = SPACES.repeat((productStock[i][j - 2].length % 2 != 1) ? spaceLeft1.length : spaceLeft1.length - imparSubtraction); // We use a ternary operator to find out whether the length of the product stock is even or odd.
         //Calculate the spaces required on the left and right to organize the stock of the product in column 2.
         spaceLeft2 = SPACES.repeat(Math.round((spaceTable - (("Stock:" + productStock[i][j - 1]).length)) / 2))
-        spaceRight2 = SPACES.repeat((productStock[i][j - 1].length % 2 != 1) ? spaceLeft2.length : spaceLeft2.length - imparsubtraction);
+        spaceRight2 = SPACES.repeat((productStock[i][j - 1].length % 2 != 1) ? spaceLeft2.length : spaceLeft2.length - imparSubtraction);
         //Calculate the spaces required on the left and right to organize the stock of the product in column 2.
         spaceLeft3 = SPACES.repeat(Math.round((spaceTable - (("Stock:" + productStock[i][j]).length)) / 2))
-        spaceRight3 = SPACES.repeat((productStock[i][j].length % 2 != 1) ? spaceLeft3.length : spaceLeft3.length - imparsubtraction);
+        spaceRight3 = SPACES.repeat((productStock[i][j].length % 2 != 1) ? spaceLeft3.length : spaceLeft3.length - imparSubtraction);
         //Organize the results in the coordinates and stock variables, to add it to the itemTable variable and print the final shade.
         coord = `|${spaceLeft}${(i + 1)}.${(j - 1)}${spaceRight}|${spaceLeft}${(i + 1)}.${(j )}${spaceRight}|${spaceLeft}${(i + 1)}.${(j + 1)}${spaceRight}|`;
         stock = `|${spaceLeft1}Stock:${matrixStock[i][j - 2]}${spaceRight1}|${spaceLeft2}Stock:${matrixStock[i][j - 1]}${spaceRight2}|${spaceLeft3}Stock:${matrixStock[i][j]}${spaceRight3}|`;
@@ -68,7 +68,7 @@ function showStock(matrixStock, row, column) {
     //When the product stock is different from 0, it shows the quantity by subtracting, otherwise it prints a message.
     if (newStock != 0) {
       newStock = newStock - 1;
-      matrixStock[row][column] = String(newStock);
+      matrixStock[row][column] = "" + newStock;
     } else {
       console.log('The product is no longer available');
     }
